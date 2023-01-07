@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ba839a46-1bf4-4f8e-9384-d2fe76dd1797}">
+		<property name="name">
+			<value>Hit</value>
+		</property>
+		<relationship name="folder">
+			<destination>{72f95821-5230-411c-80df-37b4d27aae03}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e8067ca8-45d8-424d-8a81-527d90b223d0}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e8067ca8-45d8-424d-8a81-527d90b223d0}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>idle</value>
+			<value>enemy</value>
+			<value>wall</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
