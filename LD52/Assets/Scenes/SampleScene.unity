@@ -812,6 +812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664225652}
   - component: {fileID: 1664225651}
+  - component: {fileID: 1664225653}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -846,6 +847,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664225653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664225650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1635052611
+      Data2: 1326051732
+      Data3: 531862433
+      Data4: -14148801
+    Path: event:/Welcome
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1695580405
 GameObject:
   m_ObjectHideFlags: 0
