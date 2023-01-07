@@ -102,6 +102,9 @@ namespace LD52.Player
                 m_LastGroundedTime = m_JumpCoyoteTime;
             }
             else m_IsGrounded = false;
+            
+            if (m_IsGrounded != m_WasGrounded)
+            {}
 
             m_IsTouchingWall = Physics2D.OverlapCircle(m_WallCheck.position, m_WallCheckRadius, m_WallLayer);
         }
@@ -111,8 +114,8 @@ namespace LD52.Player
             // Movement
             float targetSpeed = move * m_MoveSpeed;
             float speedDiff = targetSpeed - m_Rigidbody.velocity.x;
-            float acelRate = Mathf.Abs(targetSpeed) > 0.01f ? m_Acceleration : m_Deceleration;
-            float movement = Mathf.Pow(Mathf.Abs(speedDiff) * acelRate, m_VelocityPower) * Mathf.Sign(speedDiff);
+            float accelerationRate = Mathf.Abs(targetSpeed) > 0.01f ? m_Acceleration : m_Deceleration;
+            float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelerationRate, m_VelocityPower) * Mathf.Sign(speedDiff);
 
             if (!m_IsDashing && !m_PlayerCombat.IsAttacking)
                 m_Rigidbody.AddForce(movement * Vector2.right);
