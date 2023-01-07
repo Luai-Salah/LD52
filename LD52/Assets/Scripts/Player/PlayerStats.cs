@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace LD52
+namespace LD52.Player
 {
     public class PlayerStats : MonoBehaviour
     {

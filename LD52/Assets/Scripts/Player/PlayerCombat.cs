@@ -1,11 +1,10 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using LD52.Enemies;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using LD52.Enemies;
-
-namespace LD52
+namespace LD52.Player
 {
     public class PlayerCombat : MonoBehaviour
     {

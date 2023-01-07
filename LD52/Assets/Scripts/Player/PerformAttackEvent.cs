@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace LD52
+namespace LD52.Player
 {
     public class PerformAttackEvent : MonoBehaviour
     {

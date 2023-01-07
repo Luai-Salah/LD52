@@ -1,3 +1,4 @@
+using LD52.Player;
 using UnityEngine;
 
 namespace LD52.Enemies

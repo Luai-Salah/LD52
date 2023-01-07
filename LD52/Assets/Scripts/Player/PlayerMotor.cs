@@ -1,9 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
-namespace LD52
+namespace LD52.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMotor : MonoBehaviour
@@ -205,7 +204,7 @@ namespace LD52
 
         #region Wall Jump
 
-        public void OnWallJump(InputAction.CallbackContext context)
+        public void OnWallJump()
         {
             if (!m_IsSliding) 
                 return;
@@ -228,7 +227,7 @@ namespace LD52
 
         #region Dash
 
-        public void OnDash(InputAction.CallbackContext context)
+        public void OnDash()
         {
             if (m_IsDashing || !m_CanDash)
                 return;
