@@ -12,6 +12,8 @@ namespace LD52.Player
 
         public bool IsAttacking => m_NextAttackTime > Time.time;
 
+        [SerializeField] private int m_DamageAmount = 20;
+        
         [SerializeField] private LayerMask m_EnemiesLayer;
         [SerializeField] private Attack[] m_ComboAttacks;
 
@@ -106,7 +108,7 @@ namespace LD52.Player
 
                 foreach (Collider2D eCollider in enemies)
                 {
-                    eCollider.GetComponent<Enemy>()?.TakeDamage(40, direction);
+                    eCollider.GetComponent<Enemy>()?.TakeDamage(m_DamageAmount, direction);
                     var death = eCollider.GetComponent<DeathProjectile>();
                     if (death)
                         Destroy(death.gameObject);

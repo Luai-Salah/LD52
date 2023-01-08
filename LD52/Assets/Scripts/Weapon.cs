@@ -23,9 +23,6 @@ namespace LD52
 
         public void Shoot(InputAction.CallbackContext _)
         {
-            if (!m_PlayerStats.ConsumeBlood(m_BloodCost)) 
-                return;
-            
             Instantiate(m_BulletPrefab, m_FirePoint.position, m_FirePoint.rotation);
             m_Animator.SetTrigger(s_Shoot);
         }

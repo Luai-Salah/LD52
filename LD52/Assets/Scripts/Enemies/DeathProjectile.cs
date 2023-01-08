@@ -24,7 +24,6 @@ namespace LD52.Enemies
             if (!player)
                 return;
                         
-            player.ConsumeBlood(-m_IncreasedBlood);
             Destroy(gameObject);
         }
     }

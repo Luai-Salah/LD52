@@ -3,48 +3,103 @@ using UnityEngine;
 
 namespace LD52.Enemies
 {
+    [RequireComponent(typeof(Seeker))]
     public class EnemyAI : MonoBehaviour
     {
+        public bool FlipToTarget { get => m_FlipToTarget; set => m_FlipToTarget = value; }
+        
         public bool ReachedEndOfPath { get; private set; }
-        public bool Update { get; set; } = true;
 
-        [SerializeField] private Transform[] m_Targets;
-        [SerializeField] private Transform m_Center;
+        public Path Path { get; private set; }
+     
+        public int CurrentWaypointIndex { get; private set; }
+        
+        public bool FacingRight { get; private set; }
+        
+        public Vector3 CurrentWaypoint => Path.vectorPath[CurrentWaypointIndex];
+        public Transform Target => m_Target;
+        
+        /// <summary>
+        /// Whether should the path be updated or not.
+        /// </summary>
+        public bool IsUpdating { get; set; } = true;
 
-        [SerializeField] private float m_Speed = 200f;
+        [Header("Basic")]
+        [SerializeField] private Transform m_Target;
+
+        [Space]
         [SerializeField] private float m_NextWaypointDistance = 3f;
-        [SerializeField] private float m_NextUpdateTime = 3f;
-        [SerializeField] private float m_MinLength = 3f;
-        [SerializeField] private float m_MaxLength = 10f;
+        [SerializeField] private float m_NextUpdateTime = 0.5f;
 
-        private Path m_Path;
-        private int m_CurrentWaypoint;
-        private int m_LastIndex;
+        [Space]
+        [SerializeField] private bool m_FlipToTarget = true;
 
         private Seeker m_Seeker;
-        private Rigidbody2D m_Rigidbody;
+        private float m_NextWpDistSqr;
 
-        private void Start()
+        private void Awake()
         {
-            if (m_Targets.Length == 0 || m_Center == null)
-            {
-                m_Targets = new[] { GameObject.FindGameObjectWithTag("Player").transform };
-                m_Center = m_Targets[0];
-            }
-
+            m_Target = GameObject.FindGameObjectWithTag("Player").transform;
             m_Seeker = GetComponent<Seeker>();
-            m_Rigidbody = GetComponent<Rigidbody2D>();
+        }
 
+        /// <summary>
+        /// Pathfinding initialization step, needs to happen either in awake or start.
+        /// </summary>
+        public void OnStart()
+        {
             InvokeRepeating(nameof(UpdatePath), 0.0f, m_NextUpdateTime);
+            m_NextWpDistSqr = m_NextWaypointDistance * m_NextWaypointDistance;
+        }
+
+        /// <summary>
+        /// Pathfinding checks and values updates needs to happen before your update loop.
+        /// </summary>
+        /// <returns>False if it fails that means you need to break/return from your update loop</returns>
+        public bool PreUpdate()
+        {
+            if (Path == null)
+                return false;
+
+            if (CurrentWaypointIndex >= Path.vectorPath.Count)
+            {
+                ReachedEndOfPath = true;
+                return false;
+            }
+            
+            ReachedEndOfPath = false;
+            return true;
+        }
+
+        /// <summary>
+        /// Pathfinding checks and value updates needs to happen after your update loop.
+        /// </summary>
+        public void PostUpdate()
+        {
+            float distanceSqr = Utility.DistanceSqr(transform.position, CurrentWaypoint);
+            if (distanceSqr < m_NextWpDistSqr)
+                CurrentWaypointIndex++;
+        }
+
+        private void Update()
+        {
+            if (!FlipToTarget)
+                return;
+            
+            if ((FacingRight && transform.position.x > Target.position.x) ||
+                (!FacingRight && transform.position.x < Target.position.x))
+            {
+                Flip();
+            }
         }
 
         private void UpdatePath()
         {
-            if (m_Targets.Length == 0)
+            if (!m_Target)
                 return;
 
-            if (m_Seeker.IsDone() && Update)
-                m_Seeker.StartPath(m_Rigidbody.position, (Vector3)GetRandomPoint() + m_Center.position, OnPathComplete);
+            if (m_Seeker.IsDone() && IsUpdating)
+                m_Seeker.StartPath(transform.position, m_Target.position, OnPathComplete);
         }
 
         private void OnPathComplete(Path p)
@@ -55,57 +110,17 @@ namespace LD52.Enemies
                 return;
             }
 
-            m_Path = p;
-            m_CurrentWaypoint = 0;
+            Path = p;
+            CurrentWaypointIndex = 0;
         }
-
-        // Update is called once per frame
-        private void FixedUpdate()
+        
+        private void Flip()
         {
-            if (m_Path == null)
-                return;
+            Vector3 angles = transform.eulerAngles;
+            angles.y += 180f;
+            transform.rotation = Quaternion.Euler(angles);
 
-            if (m_CurrentWaypoint >= m_Path.vectorPath.Count)
-            {
-                ReachedEndOfPath = true;
-                return;
-            }
-
-            ReachedEndOfPath = false;
-
-            Vector2 direction = ((Vector2)m_Path.vectorPath[m_CurrentWaypoint] - m_Rigidbody.position).normalized;
-            Vector2 force = m_Speed * Time.fixedDeltaTime * direction;
-
-            m_Rigidbody.AddForce(force);
-
-            float distance = Vector2.Distance(m_Rigidbody.position, m_Path.vectorPath[m_CurrentWaypoint]);
-            if (distance < m_NextWaypointDistance)
-            {
-                m_CurrentWaypoint++;
-            }
-        }
-
-        private Vector2 GetRandomPosition()
-        {
-            if (m_Targets.Length == 1)
-                return m_Targets[0].position;
-
-            int randomIndex;
-
-            do { randomIndex = Random.Range(0, m_Targets.Length); }
-            while (randomIndex == m_LastIndex);
-
-            m_LastIndex = randomIndex;
-
-            return m_Targets[randomIndex].position;
-        }
-
-        private Vector2 GetRandomPoint()
-        {
-            float randomLength = Random.Range(m_MinLength, m_MaxLength);
-            float randomAngle = Random.Range(0.0f, Mathf.PI);
-
-            return new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * randomLength;
+            FacingRight = !FacingRight;
         }
     }
 }

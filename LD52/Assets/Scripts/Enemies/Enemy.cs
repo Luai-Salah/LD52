@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,51 +5,46 @@ namespace LD52.Enemies
 {
     public class Enemy : MonoBehaviour
     {
+        private static readonly int s_Hurt = Animator.StringToHash("Hurt");
+        private static readonly int s_IsDead = Animator.StringToHash("IsDead");
+        
         [SerializeField] private int m_MaxHealth = 100;
-        [SerializeField] private Transform m_Player;
 
         private int m_CurHealth;
+        private bool m_IsInvulnerable;
 
-        private Rigidbody2D m_RigidBody;
-        private SpriteRenderer m_SpriteRenderer;
+        private Animator m_Animator;
+        private EnemyAI m_EnemyAI;
 
         private void Start()
         {
             m_CurHealth = m_MaxHealth;
 
-            m_RigidBody = GetComponentInChildren<Rigidbody2D>();
-            m_SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            m_Animator = GetComponent<Animator>();
+            m_EnemyAI = GetComponent<EnemyAI>();
         }
 
         public void TakeDamage(int damage, Vector2 direction) => StartCoroutine(TakeDamageImpl(damage, direction));
 
         private IEnumerator TakeDamageImpl(int damage, Vector2 direction)
         {
+            if (m_IsInvulnerable)
+                yield break;
+            
             m_CurHealth -= damage;
+            m_Animator.SetTrigger(s_Hurt);
             if (m_CurHealth <= 0)
             {
-                Destroy(gameObject);
+                m_Animator.SetBool(s_IsDead, true);
+                m_EnemyAI.IsUpdating = false;
+                m_EnemyAI.enabled = false;
             }
 
-            m_RigidBody.AddForce(direction * 20.0f, ForceMode2D.Impulse);
+            m_IsInvulnerable = true;
 
-            for (short i = 0; i < 3; i++)
-            {
-                m_SpriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(.2f);
 
-                yield return new WaitForSeconds(0.1f);
-
-                // ReSharper disable once Unity.InefficientPropertyAccess
-                m_SpriteRenderer.color = Color.white;
-            }
-        }
-
-        public void Flip()
-        {
-            if (m_Player.position.x > transform.position.x && Math.Abs(transform.eulerAngles.y - 180.0f) < 0)
-                transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            else if (m_Player.position.x < transform.position.x && transform.eulerAngles.y == 0.0f)
-                transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+            m_IsInvulnerable = false;
         }
     }
 }
