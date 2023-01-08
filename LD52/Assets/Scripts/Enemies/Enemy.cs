@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ namespace LD52.Enemies
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private int m_MaxHealth = 100;
-        [SerializeField] private Transform m_Player;
 
         private int m_CurHealth;
 
@@ -32,7 +30,7 @@ namespace LD52.Enemies
                 Destroy(gameObject);
             }
 
-            m_RigidBody.AddForce(direction * 20.0f, ForceMode2D.Impulse);
+            m_RigidBody.AddForce(direction * 10.0f, ForceMode2D.Impulse);
 
             for (short i = 0; i < 3; i++)
             {
@@ -43,14 +41,6 @@ namespace LD52.Enemies
                 // ReSharper disable once Unity.InefficientPropertyAccess
                 m_SpriteRenderer.color = Color.white;
             }
-        }
-
-        public void Flip()
-        {
-            if (m_Player.position.x > transform.position.x && Math.Abs(transform.eulerAngles.y - 180.0f) < 0)
-                transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            else if (m_Player.position.x < transform.position.x && transform.eulerAngles.y == 0.0f)
-                transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
         }
     }
 }

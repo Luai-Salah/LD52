@@ -31,13 +31,13 @@ namespace LD52.Enemies
 
         private void Update()
         {
-            m_Animator.SetBool(s_Update, m_EnemyAI.Update);
+            m_Animator.SetBool(s_Update, m_EnemyAI.IsUpdating);
             
             switch (m_EnemyAI.ReachedEndOfPath)
             {
                 case true when !m_Attack:
                     m_Attack = true;
-                    m_EnemyAI.Update = false;
+                    m_EnemyAI.IsUpdating = false;
                     InvokeRepeating(nameof(Attack), m_AttackStartDelay, m_AttackRate);
                     break;
                 case false:
@@ -49,7 +49,7 @@ namespace LD52.Enemies
                 return;
             
             CancelInvoke(nameof(Attack));
-            m_EnemyAI.Update = true;
+            m_EnemyAI.IsUpdating = true;
             m_AttackIndex = 0;
         }
 
