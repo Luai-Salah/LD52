@@ -1,4 +1,3 @@
-using LD52.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,16 +7,12 @@ namespace LD52
     {
         [SerializeField] private Transform m_FirePoint;
         [SerializeField] private GameObject m_BulletPrefab;
-
-        [SerializeField] private float m_BloodCost = 20f;
-
-        private PlayerStats m_PlayerStats;
+        
         private Animator m_Animator;
         private static readonly int s_Shoot = Animator.StringToHash("Shoot");
 
         private void Start()
         {
-            m_PlayerStats = GetComponent<PlayerStats>();
             m_Animator = GetComponentInChildren<Animator>();
         }
 
