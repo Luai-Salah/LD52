@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 
 namespace LD52.Enemies
@@ -9,6 +10,7 @@ namespace LD52.Enemies
         private static readonly int s_IsDead = Animator.StringToHash("IsDead");
         
         [SerializeField] private int m_MaxHealth = 100;
+        [SerializeField] private StudioEventEmitter m_HitEmitter;
 
         private int m_CurHealth;
         private bool m_IsInvulnerable;
@@ -33,6 +35,7 @@ namespace LD52.Enemies
             
             m_CurHealth -= damage;
             m_Animator.SetTrigger(s_Hurt);
+            m_HitEmitter.Play();
             if (m_CurHealth <= 0)
                 Die();
 

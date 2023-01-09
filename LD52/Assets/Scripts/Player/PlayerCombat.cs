@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using FMODUnity;
 using LD52.Enemies;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +18,9 @@ namespace LD52.Player
         
         [SerializeField] private LayerMask m_EnemiesLayer;
         [SerializeField] private Attack[] m_ComboAttacks;
+
+        [Space]
+        [SerializeField] private StudioEventEmitter m_SwordEmitter;
 
         private PlayerMotor m_Motor;
         private Animator m_Animator;
@@ -115,6 +119,8 @@ namespace LD52.Player
                     if (death)
                         Destroy(death.gameObject);
                 }
+                
+                m_SwordEmitter.Play();
             }
 
             m_CurrentAttackIndex++;
