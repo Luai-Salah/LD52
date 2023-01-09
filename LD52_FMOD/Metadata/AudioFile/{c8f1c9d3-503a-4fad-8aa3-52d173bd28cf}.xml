@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c8f1c9d3-503a-4fad-8aa3-52d173bd28cf}">
+		<property name="assetPath">
+			<value>Swordenemy_01.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.72160997732426302</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cedbc49a-a441-4ef9-80ef-3bdc35b92939}</destination>
+		</relationship>
+	</object>
+</objects>
