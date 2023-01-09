@@ -34,17 +34,25 @@ namespace LD52.Enemies
             m_CurHealth -= damage;
             m_Animator.SetTrigger(s_Hurt);
             if (m_CurHealth <= 0)
-            {
-                m_Animator.SetBool(s_IsDead, true);
-                m_EnemyAI.IsUpdating = false;
-                m_EnemyAI.enabled = false;
-            }
+                Die();
 
             m_IsInvulnerable = true;
 
             yield return new WaitForSeconds(.2f);
 
             m_IsInvulnerable = false;
+        }
+
+        private void Die()
+        {
+            m_Animator.SetBool(s_IsDead, true);
+            m_EnemyAI.IsUpdating = false;
+            m_EnemyAI.enabled = false;
+
+            foreach (Collider2D col in GetComponents<Collider2D>())
+                col.enabled = false;
+
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
     }
 }

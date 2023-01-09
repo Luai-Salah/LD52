@@ -6,7 +6,6 @@ namespace LD52.Enemies
     public class DeathProjectile : MonoBehaviour
     {
         [SerializeField] private float m_Speed = 200f;
-        [SerializeField] private int m_IncreasedBlood = 10;
 
         private Rigidbody2D m_Rigidbody;
 

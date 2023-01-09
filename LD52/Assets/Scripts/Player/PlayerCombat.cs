@@ -13,6 +13,7 @@ namespace LD52.Player
         public bool IsAttacking => m_NextAttackTime > Time.time;
 
         [SerializeField] private int m_DamageAmount = 20;
+        [SerializeField] private float m_AttackCoolDown = 0.3f;
         
         [SerializeField] private LayerMask m_EnemiesLayer;
         [SerializeField] private Attack[] m_ComboAttacks;
@@ -22,6 +23,7 @@ namespace LD52.Player
 
         private float m_NextAttackTime;
         private float m_AttackExitTime;
+        private float m_CooldownTime;
         private int m_CurrentAttackIndex;
         private static readonly int s_Attack = Animator.StringToHash("Attack");
         private static readonly int s_VAttack = Animator.StringToHash("vAttack");
@@ -49,7 +51,7 @@ namespace LD52.Player
             if (m_ComboAttacks.Length == 0)
                 return;
 
-            if (!(Time.time > m_NextAttackTime))
+            if (m_NextAttackTime >= Time.time || m_CooldownTime >= Time.time)
                 return;
             
             Attack attack = m_ComboAttacks[m_CurrentAttackIndex];
@@ -117,8 +119,11 @@ namespace LD52.Player
 
             m_CurrentAttackIndex++;
 
-            if (m_CurrentAttackIndex >= m_ComboAttacks.Length)
-                m_CurrentAttackIndex = 0;
+            if (m_CurrentAttackIndex < m_ComboAttacks.Length)
+                return;
+            
+            m_CurrentAttackIndex = 0;
+            m_CooldownTime = Time.time + m_AttackCoolDown;
         }
 
         private void OnDrawGizmosSelected()

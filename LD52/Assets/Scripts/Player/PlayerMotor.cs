@@ -16,16 +16,16 @@ namespace LD52.Player
         public bool FacingRight { get; private set; } = true;
 
         [Header("Movement")]
-        [SerializeField] private float m_MoveSpeed = 10f;
-        [SerializeField] private float m_Acceleration = 7f;
-        [SerializeField] private float m_Deceleration = 7f;
+        [SerializeField] private float m_MoveSpeed = 16f;
+        [SerializeField] private float m_Acceleration = 18f;
+        [SerializeField] private float m_Deceleration = 18f;
         [SerializeField] private float m_VelocityPower = 0.9f;
 
         [Space]
         [SerializeField] private float m_FrictionAmount = 0.2f;
 
         [Header("Jump")]
-        [SerializeField] private float m_JumpForce = 80.0f;
+        [SerializeField] private float m_JumpForce = 20.0f;
         [SerializeField] private float m_JumpCutMultiplier = 0.5f;
 
         [Space]
@@ -33,22 +33,22 @@ namespace LD52.Player
         [SerializeField] private float m_JumpBufferTime = 0.1f;
 
         [Space]
-        [SerializeField] private float m_GravityScale = 1f;
-        [SerializeField] private float m_FallGravityMultiplier = 2f;
+        [SerializeField] private float m_GravityScale = 3f;
+        [SerializeField] private float m_FallGravityMultiplier = 1.8f;
 
         [Header("Wall Jump")]
-        [SerializeField] private float m_WallSlidingSpeed = 5f;
-        [SerializeField] private Vector2 m_WallForce = new Vector2(20f, 15f);
+        [SerializeField] private float m_WallSlidingSpeed = 6f;
+        [SerializeField] private Vector2 m_WallForce = new(20f, 15f);
         [SerializeField] private float m_WallJumpTime = 0.1f;
 
         [Header("Dash")]
-        [SerializeField] private float m_DashForce = 50f;
-        [SerializeField] private float m_DashTime = 0.1f;
+        [SerializeField] private float m_DashForce = 500f;
+        [SerializeField] private float m_DashTime = 0.13f;
         [SerializeField] private float m_NextDashTime = 0.1f;
 
         [Header("Checks")]
         [SerializeField] private Transform m_GroundCheck;
-        [SerializeField] private Vector2 m_GroundCheckSize = new Vector2(0.5f, 0.02f);
+        [SerializeField] private Vector2 m_GroundCheckSize = new(0.5f, 0.02f);
         [SerializeField] private LayerMask m_GroundLayer;
 
         [Space]
