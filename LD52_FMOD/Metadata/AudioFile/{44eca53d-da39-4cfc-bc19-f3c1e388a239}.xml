@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{44eca53d-da39-4cfc-bc19-f3c1e388a239}">
+		<property name="assetPath">
+			<value>soul collected sfx.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.6250113378684805</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cedbc49a-a441-4ef9-80ef-3bdc35b92939}</destination>
+		</relationship>
+	</object>
+</objects>
