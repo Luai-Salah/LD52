@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 namespace LD52.Player
@@ -9,6 +10,9 @@ namespace LD52.Player
         
         [Header("Health")]
         [SerializeField] private int m_MaxHealth = 100;
+
+        [SerializeField] private StudioEventEmitter m_HitEmitter;
+        [SerializeField] private StudioEventEmitter m_DeathEmitter;
 
         private Animator m_Animator;
         private Rigidbody2D m_Rigidbody2D;
@@ -30,10 +34,11 @@ namespace LD52.Player
         {
             m_CurrentHealth -= amount;
             m_Rigidbody2D.velocity = Vector2.zero;
-
             m_Animator.SetTrigger(s_Hurt);
+
             if (m_CurrentHealth <= 0)
                 Die();
+            else m_HitEmitter.Play();
         }
 
         private void Die()
@@ -47,6 +52,7 @@ namespace LD52.Player
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             
             m_Animator.SetBool(s_IsDead, true);
+            m_DeathEmitter.Play();
         }
     }
 }

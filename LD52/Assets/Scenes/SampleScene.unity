@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 152486590}
   - component: {fileID: 152486593}
   - component: {fileID: 152486594}
+  - component: {fileID: 152486595}
   m_Layer: 7
   m_Name: GroundEnemy
   m_TagString: Untagged
@@ -551,6 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 100
+  m_HitEmitter: {fileID: 152486595}
 --- !u!114 &152486594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +571,36 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_AttackRadius: 0.5
+--- !u!114 &152486595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152486583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1575947320
+      Data2: 1225037374
+      Data3: 462843526
+      Data4: 935107937
+    Path: event:/Characters/Enemy recieve damage
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &217874820
 GameObject:
   m_ObjectHideFlags: 0
@@ -15618,6 +15650,7 @@ GameObject:
   - component: {fileID: 1729850210}
   - component: {fileID: 1729850209}
   - component: {fileID: 1729850208}
+  - component: {fileID: 1729850218}
   m_Layer: 7
   m_Name: GroundEnemy (2)
   m_TagString: Untagged
@@ -15656,6 +15689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 100
+  m_HitEmitter: {fileID: 1729850218}
 --- !u!95 &1729850210
 Animator:
   serializedVersion: 5
@@ -15851,6 +15885,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729850218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729850207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1575947320
+      Data2: 1225037374
+      Data3: 462843526
+      Data4: 935107937
+    Path: event:/Characters/Enemy recieve damage
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1743113043
 GameObject:
   m_ObjectHideFlags: 0
@@ -16436,6 +16500,9 @@ GameObject:
   - component: {fileID: 2055180020}
   - component: {fileID: 2055180027}
   - component: {fileID: 2055180028}
+  - component: {fileID: 2055180030}
+  - component: {fileID: 2055180029}
+  - component: {fileID: 2055180031}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -16539,6 +16606,7 @@ MonoBehaviour:
     VDamagePoint: {fileID: 0}
     AttackForce: 10
     AttackRadius: 0.8
+  m_SwordEmitter: {fileID: 2055180031}
 --- !u!114 &2055180024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16643,6 +16711,100 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 100
+  m_HitEmitter: {fileID: 2055180030}
+  m_DeathEmitter: {fileID: 2055180029}
+--- !u!114 &2055180029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055180019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -104795017
+      Data2: 1326373894
+      Data3: -1636636499
+      Data4: -120116760
+    Path: event:/Characters/player dead
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2055180030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055180019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1816573110
+      Data2: 1110872075
+      Data3: -2130754631
+      Data4: 1357633637
+    Path: event:/Characters/player hit
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2055180031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055180019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1890695533
+      Data2: 1234730055
+      Data3: 822960558
+      Data4: 839444973
+    Path: event:/Characters/Sword
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: Hit
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2100221751
 GameObject:
   m_ObjectHideFlags: 0
@@ -16661,6 +16823,7 @@ GameObject:
   - component: {fileID: 2100221754}
   - component: {fileID: 2100221753}
   - component: {fileID: 2100221752}
+  - component: {fileID: 2100221762}
   m_Layer: 7
   m_Name: GroundEnemy (1)
   m_TagString: Untagged
@@ -16699,6 +16862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealth: 100
+  m_HitEmitter: {fileID: 2100221762}
 --- !u!95 &2100221754
 Animator:
   serializedVersion: 5
@@ -16894,6 +17058,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100221762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100221751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1575947320
+      Data2: 1225037374
+      Data3: 462843526
+      Data4: 935107937
+    Path: event:/Characters/Enemy recieve damage
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2102943603
 GameObject:
   m_ObjectHideFlags: 0
