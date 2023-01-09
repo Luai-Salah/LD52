@@ -1,4 +1,5 @@
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,6 +36,9 @@ namespace LD52.Player
         [Space]
         [SerializeField] private float m_GravityScale = 3f;
         [SerializeField] private float m_FallGravityMultiplier = 1.8f;
+
+        [Space]
+        [SerializeField] private StudioEventEmitter m_JumpEmitter;
 
         [Header("Wall Jump")]
         [SerializeField] private float m_WallSlidingSpeed = 6f;
@@ -102,9 +106,12 @@ namespace LD52.Player
                 m_LastGroundedTime = m_JumpCoyoteTime;
             }
             else m_IsGrounded = false;
-            
-            if (m_IsGrounded != m_WasGrounded)
-            {}
+
+            if (m_IsGrounded != m_WasGrounded && m_IsGrounded)
+            {
+                m_JumpEmitter.Play();
+                m_JumpEmitter.SetParameter("JumpLand", 2);
+            }
 
             m_IsTouchingWall = Physics2D.OverlapCircle(m_WallCheck.position, m_WallCheckRadius, m_WallLayer);
         }
@@ -183,6 +190,12 @@ namespace LD52.Player
         public void OnJump(InputAction.CallbackContext context)
         {
             m_LastJumpTime = m_JumpBufferTime;
+
+            if (m_LastGroundedTime <= 0.0f)
+                return;
+            
+            m_JumpEmitter.Play();
+            m_JumpEmitter.SetParameter("JumpLand", 0);
         }
 
         private void Jump()

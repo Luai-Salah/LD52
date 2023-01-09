@@ -90,6 +90,8 @@ namespace LD52.Player
 
             if (attack.AttackPrefab)
                 Destroy(Instantiate(attack.AttackPrefab, position, rotation), m_AttackExitTime);
+            
+            m_SwordEmitter.Play();
         }
 
         public void PerformAttack()
@@ -114,13 +116,11 @@ namespace LD52.Player
 
                 foreach (Collider2D eCollider in enemies)
                 {
-                    eCollider.GetComponent<Enemy>()?.TakeDamage(m_DamageAmount, direction);
+                    eCollider.GetComponent<Enemy>()?.TakeDamage(m_DamageAmount);
                     var death = eCollider.GetComponent<DeathProjectile>();
                     if (death)
                         Destroy(death.gameObject);
                 }
-                
-                m_SwordEmitter.Play();
             }
 
             m_CurrentAttackIndex++;

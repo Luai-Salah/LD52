@@ -26,9 +26,9 @@ namespace LD52.Enemies
             m_EnemyAI = GetComponent<EnemyAI>();
         }
 
-        public void TakeDamage(int damage, Vector2 direction) => StartCoroutine(TakeDamageImpl(damage, direction));
+        public void TakeDamage(int damage) => StartCoroutine(TakeDamageImpl(damage));
 
-        private IEnumerator TakeDamageImpl(int damage, Vector2 direction)
+        private IEnumerator TakeDamageImpl(int damage)
         {
             if (m_IsInvulnerable)
                 yield break;

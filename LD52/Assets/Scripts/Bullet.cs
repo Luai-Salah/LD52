@@ -21,7 +21,7 @@ namespace LD52
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            col.GetComponent<Enemy>()?.TakeDamage(m_Damage, transform.right);
+            col.GetComponent<Enemy>()?.TakeDamage(m_Damage);
         }
     }
 }

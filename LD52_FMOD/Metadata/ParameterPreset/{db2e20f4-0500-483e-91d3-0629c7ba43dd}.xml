@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{db2e20f4-0500-483e-91d3-0629c7ba43dd}">
 		<property name="name">
-			<value>Jump&amp;Land</value>
+			<value>JumpLand</value>
 		</property>
 		<relationship name="folder">
 			<destination>{72f95821-5230-411c-80df-37b4d27aae03}</destination>
@@ -12,19 +12,14 @@
 		</relationship>
 	</object>
 	<object class="GameParameter" id="{8161656c-b811-4c34-b149-cbf6bafa1f00}">
-		<property name="parameterType">
-			<value>2</value>
-		</property>
 		<property name="maximum">
 			<value>3</value>
 		</property>
-		<property name="enumerationLabels">
-			<value>Jump</value>
-			<value>WallJump</value>
-			<value>Land</value>
-		</property>
 		<property name="initialValue">
 			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
 		</property>
 	</object>
 </objects>

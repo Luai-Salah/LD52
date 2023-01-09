@@ -119,6 +119,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{2ff95111-4942-432a-8d3f-139c275746f7}">
+		<property name="startOffset">
+			<value>21.5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{0cde10fc-e944-4be9-8f65-46c1259e03d5}</destination>
 		</relationship>

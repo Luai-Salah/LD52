@@ -10139,6 +10139,7 @@ GameObject:
   - component: {fileID: 1416813584}
   - component: {fileID: 1416813585}
   - component: {fileID: 1416813586}
+  - component: {fileID: 1416813587}
   m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
@@ -10245,6 +10246,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122fd076971f91d42ab5037cddba24f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1416813587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416813582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -976619911
+      Data2: 1117956943
+      Data3: -1595852887
+      Data4: 2044315777
+    Path: event:/Characters/Footsteps
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1431490055
 GameObject:
   m_ObjectHideFlags: 0
@@ -15505,12 +15536,14 @@ MonoBehaviour:
       Data4: -1091142302
     Path: event:/MUSIC, use this one
   Event: 
-  PlayEvent: 0
+  PlayEvent: 11
   StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: Music state
+    Value: 1
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
@@ -16503,6 +16536,7 @@ GameObject:
   - component: {fileID: 2055180030}
   - component: {fileID: 2055180029}
   - component: {fileID: 2055180031}
+  - component: {fileID: 2055180032}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -16619,17 +16653,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f87d56c87728634eb47441aa9cbd776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 12
-  m_Acceleration: 14
-  m_Deceleration: 14
+  m_MoveSpeed: 10
+  m_Acceleration: 10
+  m_Deceleration: 10
   m_VelocityPower: 0.96
   m_FrictionAmount: 0.2
   m_JumpForce: 12
-  m_JumpCutMultiplier: 0.4
+  m_JumpCutMultiplier: 0.1
   m_JumpCoyoteTime: 0.1
   m_JumpBufferTime: 0.1
   m_GravityScale: 3
   m_FallGravityMultiplier: 1.8
+  m_JumpEmitter: {fileID: 2055180032}
   m_WallSlidingSpeed: 6
   m_WallForce: {x: 20, y: 15}
   m_WallJumpTime: 0.1
@@ -16802,6 +16837,38 @@ MonoBehaviour:
   Params:
   - Name: Hit
     Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &2055180032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055180019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 10715302
+      Data2: 1312439957
+      Data3: 114285963
+      Data4: 1026359898
+    Path: event:/Characters/JumpLand
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: JumpLand
+    Value: 2
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
