@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6729fe51-5d3d-491f-92d4-bff1dff09f73}">
+		<property name="assetPath">
+			<value>swordfaster.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.62997732426303854</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cedbc49a-a441-4ef9-80ef-3bdc35b92939}</destination>
+		</relationship>
+	</object>
+</objects>

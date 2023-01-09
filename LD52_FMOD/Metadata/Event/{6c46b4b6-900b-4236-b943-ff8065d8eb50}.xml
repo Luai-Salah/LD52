@@ -5,7 +5,7 @@
 			<value>Player hit</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d74750ac-8dcf-4224-a9e1-2165e648e88a}</destination>
@@ -97,6 +97,7 @@
 		<relationship name="effects">
 			<destination>{cab36d2a-31a1-4b59-a8a7-40dce9ac362f}</destination>
 			<destination>{3d2358ae-b932-4e8a-8889-3930698a601a}</destination>
+			<destination>{3eed386a-3b90-413b-85e4-587a7c714bb0}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{37cf3124-75e2-4952-bebb-949852ac8268}" />
@@ -105,7 +106,7 @@
 			<value>4.5</value>
 		</property>
 		<property name="pitch">
-			<value>3.60000014</value>
+			<value>0.699999988</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{5ec9f961-1017-4e42-9434-efae004b19b2}</destination>
@@ -121,6 +122,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{3d2358ae-b932-4e8a-8889-3930698a601a}" />
+	<object class="SpatialiserEffect" id="{3eed386a-3b90-413b-85e4-587a7c714bb0}" />
 	<object class="RandomizerModulator" id="{5ec9f961-1017-4e42-9434-efae004b19b2}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

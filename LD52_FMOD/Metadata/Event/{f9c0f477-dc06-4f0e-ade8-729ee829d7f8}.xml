@@ -5,7 +5,7 @@
 			<value>player dead</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d74750ac-8dcf-4224-a9e1-2165e648e88a}</destination>
@@ -95,14 +95,19 @@
 	<object class="MixerBusPanner" id="{610fdaf3-4bb5-42d2-9718-f86c6126df3d}" />
 	<object class="MixerBusEffectChain" id="{0de56996-9f83-4999-932e-109b284df5aa}">
 		<relationship name="effects">
+			<destination>{f268f1e8-c000-4980-a663-ee0eb1999428}</destination>
 			<destination>{58dfe802-e063-4ee6-9992-1218b896799b}</destination>
 			<destination>{995b3448-3756-4b0d-80f9-c6fd19a2e23f}</destination>
+			<destination>{84608b45-2892-4cdc-9d36-9da848e2d740}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{eb36271c-053d-4371-8060-e702ca71f013}" />
 	<object class="SingleSound" id="{3483791f-8476-4f4e-8fd2-5921a9efd18c}">
 		<property name="startOffset">
 			<value>3</value>
+		</property>
+		<property name="volume">
+			<value>-5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{c64616c8-dba7-4699-a85d-af57b6d57c64}</destination>
@@ -113,6 +118,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{5e3c79a1-30ab-4387-8a1e-d191215e58c4}" />
+	<object class="MultibandEqEffect" id="{f268f1e8-c000-4980-a663-ee0eb1999428}">
+		<property name="filterTypeA">
+			<value>4</value>
+		</property>
+		<property name="frequencyA">
+			<value>456.834198</value>
+		</property>
+		<property name="qualityA">
+			<value>0.497689635</value>
+		</property>
+	</object>
 	<object class="FlangerEffect" id="{58dfe802-e063-4ee6-9992-1218b896799b}">
 		<property name="rate">
 			<value>1.80000007</value>
@@ -122,6 +138,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{995b3448-3756-4b0d-80f9-c6fd19a2e23f}" />
+	<object class="SpatialiserEffect" id="{84608b45-2892-4cdc-9d36-9da848e2d740}" />
 	<object class="RandomizerModulator" id="{c64616c8-dba7-4699-a85d-af57b6d57c64}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

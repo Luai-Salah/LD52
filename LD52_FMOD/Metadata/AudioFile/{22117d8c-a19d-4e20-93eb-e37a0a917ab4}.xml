@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{22117d8c-a19d-4e20-93eb-e37a0a917ab4}">
+		<property name="assetPath">
+			<value>walljump.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.966530612244898</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cedbc49a-a441-4ef9-80ef-3bdc35b92939}</destination>
+		</relationship>
+	</object>
+</objects>
